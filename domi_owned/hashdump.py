@@ -72,7 +72,7 @@ class HashDump(DomiOwned):
 			if 'No documents found' in str(soup.findAll('h2')):
 				break
 			else:
-				links = [a.attrs.get('href') for a in soup.select('a[href^=/names.nsf/]')]
+				links = [a.attrs.get('href') for a in soup.select('a[href^="/names.nsf/"]')]
 				for link in links:
 					if self.utilities.ACCOUNT_REGEX.search(link):
 						account_url = "{0}/names.nsf/{1}?OpenDocument".format(self.url, self.utilities.ACCOUNT_REGEX.search(link).group(1))
