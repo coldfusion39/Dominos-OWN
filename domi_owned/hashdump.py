@@ -112,14 +112,16 @@ class HashDump(DomiOwned):
 		else:
 			client = aiohttp.ClientSession(headers=self.utilities.HEADERS, loop=loop)
 
-		with client as session:
-			try:
-				loop.run_until_complete(self.query(session, urls))
-			except asyncio.CancelledError:
-				sys.exit()
-			except Exception as error:
-				self.logger.error('An error occurred while dumping Domino account hashes')
-				sys.exit()
+		#with client as session:
+		try:
+			task = loop.create_task(self.query(client, urls))
+			loop.run_until_complete(task)
+			loop.close()
+		except asyncio.CancelledError:
+			sys.exit()
+		except Exception as error:
+			self.logger.error('An error occurred while dumping Domino account hashes')
+			sys.exit()
 
 	async def query(self, session, urls):
 		"""
