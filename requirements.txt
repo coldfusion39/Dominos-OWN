@@ -1,5 +1,5 @@
 asyncio>=3.4.3            ; python_version >= '3.3'
-aiohttp>=1.1.5            ; python_version >= '3.3'
+aiohttp>=2.3.8            ; python_version >= '3.3'
 beautifulsoup4>=4.5.1     ; python_version >= '3.3'
 inflect>=0.2.5            ; python_version >= '3.3'
 requests>=2.9.1           ; python_version >= '3.3'
